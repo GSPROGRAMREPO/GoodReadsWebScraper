@@ -5,6 +5,13 @@ import requests
 bookList = []
 ratingList = []
 
+def authorAverage():
+    ratingSum = list(map(float, ratingList)) #changes str to floats to average them
+    while 0.0 in ratingSum:
+        ratingSum.remove(0.0) #Do not want unfound ratings to effect average
+    ratingAverage = sum(ratingSum) / (len(ratingSum))
+    print("This Authors Average book rating on GoodReads is: " + str(ratingAverage))
+
 def printingFunc():
     for k in range(len(bookList)):
         print((bookList[k]) + " " + (ratingList[k]))
@@ -51,3 +58,4 @@ def mainFunction():
 
 mainFunction();         
 printingFunc();
+authorAverage();
